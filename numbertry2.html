@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loopy's Adventure</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+        }
+        
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        #loopyImage {
+            max-width: 80%;
+            height: auto;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+        
+        #message {
+            font-size: 24px;
+            margin: 20px 0;
+            color: #333;
+        }
+        
+        .button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #a2e8f8;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        
+        .button:hover {
+            background-color: #0f0e5f;
+        }
+        
+        #nextButton {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div id="message">진혁님 우리 쪽에서 일할때:</div>
+        <img id="loopyImage" src="loopy_happy.jpeg" alt="Loopy Happy">
+        <button id="changeButton" class="button">진혁님 카페로 보내기</button>
+        <button id="nextButton" class="button">다음</button>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const loopyImage = document.getElementById('loopyImage');
+            const message = document.getElementById('message');
+            const changeButton = document.getElementById('changeButton');
+            const nextButton = document.getElementById('nextButton');
+
+            changeButton.addEventListener('click', function() {
+                loopyImage.src = 'loopy_sad.jpeg';
+                message.textContent = '진혁님 카페로 내리고 나서일때:';
+                changeButton.style.display = 'none';
+                nextButton.style.display = 'block';
+                loopyImage.style.transform = 'scale(1.1)';
+                setTimeout(() => loopyImage.style.transform = 'scale(1)', 300);
+            });
+
+            nextButton.addEventListener('click', function() {
+                loopyImage.src = 'loopy_hide.jpeg';
+                message.textContent = '보고 싶을거예요. 자주 놀러오세욤 ㅠㅠ';
+                nextButton.style.display = 'none';
+                loopyImage.style.transform = 'scale(1.1)';
+                setTimeout(() => loopyImage.style.transform = 'scale(1)', 300);
+            });
+        });
+    </script>
+</body>
+
+</html>
